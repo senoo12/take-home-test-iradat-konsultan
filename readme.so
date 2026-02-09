@@ -1,0 +1,83 @@
+
+# Salary Management (Consoler) Iradat Konsultan.
+
+Salary Management Iradat is a professional internal management platform designed to streamline attendance tracking and automate the payroll process for consolers. It provides a centralized system to ensure transparency and administrative efficiency.
+
+## Installation General
+
+Install our-project with cmd
+
+For the first step, you need to clone this repository.
+```bash
+git clone https://github.com/senoo12/take-home-test-iradat-konsultan.git
+cd take-home-test-iradat-konsultan
+```
+
+## Installation Backend
+Change your directory to folder backend:
+```bash
+cd backend
+```
+Install dependency. 
+```bash
+npm install
+```
+
+Configure your Venv.
+```bash
+cp .env.example .env
+# Create your database first in postgress
+# Edit .env with your database URL
+```
+
+Set up database.
+```bash
+npm run db:migrate
+npx run db:generate
+```
+
+Database push:
+```bash
+npm run db:push
+```
+
+Database reset:
+```bash
+npm run db:reset
+```
+
+## Installation Frontend
+Change your directory to folder frontend:
+```bash
+cd frontend
+```
+
+Install dependency
+```bash
+npm install
+```
+
+Configure your Venv.
+```bash
+cp .env.example .env
+# Edit .env with your own port (except port 3000)
+```
+
+## Usage/Examples 
+
+Run backend server:
+```bash
+npm start dev
+```
+
+Run frontend server:
+```bash
+npm start run
+```
+
+## Authors
+
+- [@senoo12](https://www.github.com/senoo12)
+
+## Screnshoot Apps
+Dashboard
