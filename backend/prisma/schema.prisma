@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SalaryStatus {
+  PENDING
+  PAID
+}
+
+enum StatusAttendance {
+  PRESENT
+  ABSENT
+}
+
+model Consoler {
+  id  String @id @default(uuid())
+  name String 
+  email String @unique
+  rate Int
+  walet Int
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  deleted_at DateTime? 
+
+  attendance Attendance[]
+  salary Salary[]
+
+  @@map("consoler")
+}
+
+model Event {
+  id String @id @default(uuid())
+  name_event String
+  description String
+  start_time DateTime
+  end_time DateTime
+  date       DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  deleted_at DateTime? 
+
+  attendance Attendance[]
+
+  @@map("event")
+}
+
+model Attendance {
+  id String @id @default(uuid())
+  id_event String
+  id_consoler String
+  hours Int?
+  status_attendance StatusAttendance
+  date_attendance DateTime?
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  deleted_at DateTime? 
+
+  event Event @relation(fields: [id_event], references: [id])
+  consoler Consoler @relation(fields: [id_consoler], references: [id])
+
+  salary Salary[]
+
+  @@map("attendance")
+}
+
+model Salary {
+  id String @id @default(uuid())
+  id_consoler String
+  id_attandance String @unique
+  salary Int
+  status SalaryStatus @default(PENDING)
+  date_paid DateTime?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  deleted_at DateTime? 
+
+  consoler Consoler @relation(fields: [id_consoler], references: [id])
+  attandance Attendance @relation(fields: [id_attandance], references: [id])
+
+  @@map("salary")
+}
