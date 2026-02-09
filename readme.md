@@ -1,4 +1,3 @@
-<img width="1909" height="947" alt="image" src="https://github.com/user-attachments/assets/d60dc1bc-0fe1-4207-aa64-5976fd0694fc" />
 # Salary Management (Consoler) Iradat Konsultan.
 
 Salary Management Iradat is a professional internal management platform designed to streamline attendance tracking and automate the payroll process for consolers. It provides a centralized system to ensure transparency and administrative efficiency.
